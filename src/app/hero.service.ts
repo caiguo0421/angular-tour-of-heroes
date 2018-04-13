@@ -13,8 +13,13 @@ export class HeroService {
 
   getHeroes(): Observable<Hero[]> {
     //通知messageSevice
-    this.messageSevice.add("HeroSerivce:fected heroes");
+    this.messageSevice.add("HeroSerivce:fetched heroes");
     return of(HEROES);
+  }
+
+  getHero(id:number):Observable<Hero>{
+    this.messageSevice.add("HeroSerivce:fetched hero id=${id}");
+    return of(HEROES.find(hero=>hero.id===id));
   }
 
 }
